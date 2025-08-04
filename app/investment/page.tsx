@@ -39,7 +39,7 @@ export default function InvestmentPage() {
       title: "MVP Launch",
       content: (
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-pink-500/10 to-purple-600/10 p-6 rounded-xl border border-pink-500/20 backdrop-blur-sm">
+          <div className="bg-gradient-to-br from-pink-500/10 to-neutral-600/10 p-6 rounded-xl border border-pink-500/20 backdrop-blur-sm">
             <h4 className="text-2xl font-bold text-white font-orbitron mb-4 flex items-center">
               <Rocket className="w-6 h-6 mr-3 text-pink-400" />
               Core Platform Development
@@ -170,7 +170,7 @@ export default function InvestmentPage() {
       title: "Partnerships",
       content: (
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-purple-500/10 to-pink-600/10 p-6 rounded-xl border border-purple-500/20 backdrop-blur-sm">
+          <div className="bg-gradient-to-br from-neutral-500/10 to-pink-600/10 p-6 rounded-xl border border-neutral-500/20 backdrop-blur-sm">
             <h4 className="text-2xl font-bold text-white font-orbitron mb-4 flex items-center">
               <Globe className="w-6 h-6 mr-3 text-purple-400" />
               Strategic Integrations
@@ -244,7 +244,7 @@ export default function InvestmentPage() {
       title: "Series A Ready",
       content: (
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-pink-500/10 to-purple-600/10 p-6 rounded-xl border border-pink-500/20 backdrop-blur-sm">
+          <div className="bg-gradient-to-br from-pink-500/10 to-neutral-600/10 p-6 rounded-xl border border-pink-500/20 backdrop-blur-sm">
             <h4 className="text-2xl font-bold text-white font-orbitron mb-4 flex items-center">
               <Sparkles className="w-6 h-6 mr-3 text-pink-400" />
               Investment Readiness
@@ -304,11 +304,11 @@ export default function InvestmentPage() {
               <motion.div 
                 whileHover={{ scale: 1.1, rotate: 180 }}
                 transition={{ duration: 0.3 }}
-                className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg flex items-center justify-center"
+                className="w-10 h-10 bg-gradient-to-r from-pink-400 to-pink-500 rounded-lg flex items-center justify-center"
               >
                 <Gamepad2 className="w-5 h-5 text-white" />
               </motion.div>
-              <span className="text-2xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Ad Angels</span>
+              <span className="text-2xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">Ad Angels</span>
             </motion.div>
             <motion.div 
               initial={{ x: 30, opacity: 0 }}
@@ -716,7 +716,7 @@ export default function InvestmentPage() {
       </section>
 
       {/* Angel Round Runway Plan */}
-      <section className="py-16 px-6 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
+      <section className="py-16 px-6 bg-gradient-to-r from-neutral-800/20 to-pink-900/20">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold font-orbitron mb-4 text-white">

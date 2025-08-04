@@ -42,7 +42,7 @@ const FloatingElements = () => {
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-pink-400/20 rounded-full"
+                      className="absolute w-2 h-2 bg-pink-400/20 rounded-full"
           animate={{
             x: [0, 100, 0],
             y: [0, -100, 0],
@@ -79,7 +79,7 @@ const SpotlightEffect = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div
-        className="absolute w-96 h-96 bg-gradient-radial from-pink-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl"
+        className="absolute w-96 h-96 bg-gradient-radial from-pink-500/10 via-neutral-400/5 to-transparent rounded-full blur-3xl"
         animate={{
           x: mousePosition.x - 192,
           y: mousePosition.y - 192,
@@ -108,16 +108,16 @@ const EnhancedCard = ({ children, className = "", ...props }: any) => {
       {...props}
     >
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 opacity-0"
+        className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-blue-500/10 opacity-0"
         animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}
       />
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-pink-500/5 to-purple-500/5"
+        className="absolute inset-0 bg-gradient-to-r from-pink-500/5 to-neutral-500/5"
         animate={{
           background: isHovered 
-            ? "linear-gradient(45deg, rgba(236, 72, 153, 0.1), rgba(147, 51, 234, 0.1))"
-            : "linear-gradient(45deg, rgba(236, 72, 153, 0.05), rgba(147, 51, 234, 0.05))"
+            ? "linear-gradient(45deg, rgba(249, 128, 168, 0.1), rgba(204, 204, 204, 0.1))"
+            : "linear-gradient(45deg, rgba(249, 128, 168, 0.05), rgba(204, 204, 204, 0.05))"
         }}
         transition={{ duration: 0.3 }}
       />
@@ -140,9 +140,9 @@ const EnhancedButton = ({ children, className = "", variant = "primary", ...prop
   const [isHovered, setIsHovered] = useState(false);
   
   const variants: Record<ButtonVariant, string> = {
-    primary: "bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white",
+    primary: "bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-black",
     outline: "border border-white/20 text-white hover:bg-white/10 bg-white/5",
-    secondary: "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+    secondary: "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white"
   };
 
   return (
@@ -169,7 +169,7 @@ const EnhancedButton = ({ children, className = "", variant = "primary", ...prop
       <span className="relative z-10">{children}</span>
       {variant === "primary" && (
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-pink-400/50 to-purple-400/50 blur-xl"
+          className="absolute inset-0 bg-gradient-to-r from-pink-400/50 to-pink-500/50 blur-xl"
           animate={{
             opacity: isHovered ? 0.8 : 0.4,
             scale: isHovered ? 1.1 : 1,
@@ -273,7 +273,7 @@ export default function AdAngelsLandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-800 via-neutral-700 to-neutral-800 relative overflow-hidden">
       <SpotlightEffect />
       <FloatingElements />
       {/* Navigation */}
@@ -294,11 +294,11 @@ export default function AdAngelsLandingPage() {
             <motion.div 
               whileHover={{ scale: 1.1, rotate: 180 }}
               transition={{ duration: 0.3 }}
-              className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"
+              className="w-10 h-10 bg-gradient-to-r from-pink-400 to-pink-500 rounded-xl flex items-center justify-center shadow-lg"
             >
               <Sparkles className="w-6 h-6 text-white" />
             </motion.div>
-            <span className="text-2xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
               Ad Angels
             </span>
           </motion.div>
@@ -364,7 +364,7 @@ export default function AdAngelsLandingPage() {
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(236, 72, 153, 0.3)" }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 font-orbitron shadow-lg hover:shadow-pink-500/25 transition-all duration-300">
+              <Button className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 font-orbitron shadow-lg hover:shadow-pink-500/25 transition-all duration-300">
                 Join Waitlist
               </Button>
             </motion.div>
@@ -424,7 +424,7 @@ export default function AdAngelsLandingPage() {
                 </Button>
               ))}
               <div className="pt-4 border-t border-white/10">
-                <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 font-orbitron">
+                <Button className="w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 font-orbitron">
                   Join Waitlist
                 </Button>
               </div>
@@ -492,7 +492,7 @@ export default function AdAngelsLandingPage() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 1.4 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold font-orbitron mb-8 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent leading-tight"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold font-orbitron mb-8 bg-gradient-to-r from-pink-400 via-neutral-300 to-pink-500 bg-clip-text text-transparent leading-tight"
           >
             Ad Angels
           </motion.h1>
@@ -504,7 +504,7 @@ export default function AdAngelsLandingPage() {
             className="text-2xl md:text-4xl lg:text-5xl font-bold font-orbitron mb-6 text-white/90 leading-tight"
           >
             3D Virtual Workspace<br />
-            <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
               Transforming Work into Play
             </span>
           </motion.h2>
@@ -552,17 +552,17 @@ export default function AdAngelsLandingPage() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, delay: 2.4 }}
-              className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-600/20 rounded-3xl blur-3xl"
+              className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-neutral-600/20 rounded-3xl blur-3xl"
             ></motion.div>
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 2.6 }}
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-              className="relative bg-gradient-to-r from-pink-500/10 to-purple-600/10 p-2 rounded-3xl backdrop-blur-sm border border-white/10"
+              className="relative bg-gradient-to-r from-pink-500/10 to-neutral-600/10 p-2 rounded-3xl backdrop-blur-sm border border-white/10"
             >
               <div className="bg-black/20 rounded-2xl p-8 backdrop-blur-sm">
-                <div className="aspect-video bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-xl flex items-center justify-center border border-white/10">
+                <div className="aspect-video bg-gradient-to-br from-pink-500/20 to-neutral-600/20 rounded-xl flex items-center justify-center border border-white/10">
                   <div className="text-center">
                     <motion.div
                       animate={{ 
@@ -610,7 +610,7 @@ export default function AdAngelsLandingPage() {
               initial={{ y: 30, opacity: 0 }}
               animate={statsInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent"
+              className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent"
             >
               A Sky-High Market Opportunity
             </motion.h2>
@@ -626,12 +626,12 @@ export default function AdAngelsLandingPage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { value: "$1.1T", label: "Global Ad Market (2025)", icon: Globe, description: "GroupM projects $1.1T in global ad revenue by 2025.", gradient: "from-pink-500 to-purple-600" },
-              { value: "$780B", label: "2023 Ad Spend", icon: TrendingUp, description: "$780B in 2023, projected to reach $1.5T by 2030 (CAGR: 13.9%).", gradient: "from-purple-500 to-cyan-500" },
-              { value: "32.6M", label: "Remote Workers (US)", icon: Users, description: "22% of the US workforce now works remotely.", gradient: "from-cyan-500 to-blue-500" },
-              { value: "$750B+", label: "Digital Ad Spend (2025)", icon: Coins, description: ">75% of all global media spend will be digital.", gradient: "from-blue-500 to-indigo-500" },
-              { value: "$800B+", label: "Digital Ad Spend (2026)", icon: Coins, description: "Forecasted to exceed $800B by 2026.", gradient: "from-indigo-500 to-purple-500" },
-              { value: "91%", label: "Remote Work Preference", icon: CheckCircle, description: "91% of workers prefer fully or mostly remote work.", gradient: "from-purple-500 to-pink-500" },
+              { value: "$1.1T", label: "Global Ad Market (2025)", icon: Globe, description: "GroupM projects $1.1T in global ad revenue by 2025.", gradient: "from-pink-400 to-pink-500" },
+              { value: "$780B", label: "2023 Ad Spend", icon: TrendingUp, description: "$780B in 2023, projected to reach $1.5T by 2030 (CAGR: 13.9%).", gradient: "from-neutral-500 to-neutral-400" },
+              { value: "32.6M", label: "Remote Workers (US)", icon: Users, description: "22% of the US workforce now works remotely.", gradient: "from-neutral-400 to-neutral-500" },
+              { value: "$750B+", label: "Digital Ad Spend (2025)", icon: Coins, description: ">75% of all global media spend will be digital.", gradient: "from-neutral-500 to-neutral-600" },
+              { value: "$800B+", label: "Digital Ad Spend (2026)", icon: Coins, description: "Forecasted to exceed $800B by 2026.", gradient: "from-neutral-500 to-neutral-600" },
+              { value: "91%", label: "Remote Work Preference", icon: CheckCircle, description: "91% of workers prefer fully or mostly remote work.", gradient: "from-neutral-500 to-pink-500" },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -732,7 +732,7 @@ export default function AdAngelsLandingPage() {
             
             <Card className="bg-gradient-to-br from-yellow-900/20 to-yellow-800/20 border-yellow-500/20 backdrop-blur-sm hover:bg-yellow-900/30 transition-all duration-300">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-pink-400 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
                   <Target className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-yellow-400 font-orbitron mb-4">Low ROI on Expertise</h3>
@@ -745,7 +745,7 @@ export default function AdAngelsLandingPage() {
           
           {/* Solution Section */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
               Ad Angels: A Radical Reimagining
             </h2>
             <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto font-roboto leading-relaxed">
@@ -756,7 +756,7 @@ export default function AdAngelsLandingPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div className="flex items-start space-x-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 bg-gradient-to-r from-pink-400 to-pink-500 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -793,9 +793,9 @@ export default function AdAngelsLandingPage() {
             </div>
             
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-600/20 rounded-3xl blur-2xl"></div>
-              <div className="relative bg-gradient-to-br from-pink-500/10 to-purple-600/10 p-8 rounded-3xl backdrop-blur-sm border border-white/10">
-                <div className="aspect-square bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center border border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-neutral-600/20 rounded-3xl blur-2xl"></div>
+              <div className="relative bg-gradient-to-br from-pink-500/10 to-neutral-600/10 p-8 rounded-3xl backdrop-blur-sm border border-white/10">
+                <div className="aspect-square bg-gradient-to-br from-pink-500/20 to-neutral-600/20 rounded-2xl flex items-center justify-center border border-white/10">
                   <div className="text-center">
                     <Globe className="w-32 h-32 text-pink-400 mx-auto mb-6 animate-pulse" />
                     <p className="text-white/80 font-orbitron text-xl">3D Workspace Experience</p>
@@ -808,10 +808,10 @@ export default function AdAngelsLandingPage() {
       </section>
 
       {/* Game Psychology Section */}
-      <section id="features" className="py-20 px-6 bg-gradient-to-br from-purple-900/50 to-slate-800/50 backdrop-blur-sm">
+      <section id="features" className="py-20 px-6 bg-gradient-to-br from-neutral-800/50 to-slate-800/50 backdrop-blur-sm">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-pink-400 to-neutral-400 bg-clip-text text-transparent">
               Game Psychology in AdAngels Design
             </h2>
             <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto font-roboto leading-relaxed">
@@ -821,12 +821,12 @@ export default function AdAngelsLandingPage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: Sparkles, title: "Motivational Theory", description: "We design for autonomy, competence, and relatedness to maximize engagement and motivation.", gradient: "from-pink-500 to-purple-600" },
+              { icon: Sparkles, title: "Motivational Theory", description: "We design for autonomy, competence, and relatedness to maximize engagement and motivation.", gradient: "from-pink-400 to-pink-500" },
               { icon: Heart, title: "Emotional Design", description: "Narrative, character, and gameplay evoke emotions that deepen player investment.", gradient: "from-red-500 to-pink-500" },
-              { icon: Brain, title: "Cognitive Psychology", description: "We balance cognitive load, attention, and memory for intuitive, challenging gameplay.", gradient: "from-blue-500 to-cyan-500" },
-              { icon: BarChart3, title: "Behavioral Economics", description: "We use sunk cost fallacy and artificial scarcity to influence player decisions and resource management.", gradient: "from-green-500 to-emerald-500" },
-              { icon: Users, title: "Social Psychology", description: "We foster social interaction and community by understanding group dynamics and social behaviors.", gradient: "from-yellow-500 to-orange-500" },
-              { icon: Shield, title: "Achievement Systems", description: "Reward systems and progression mechanics that maintain long-term engagement and motivation.", gradient: "from-indigo-500 to-purple-500" },
+              { icon: Brain, title: "Cognitive Psychology", description: "We balance cognitive load, attention, and memory for intuitive, challenging gameplay.", gradient: "from-neutral-500 to-neutral-400" },
+              { icon: BarChart3, title: "Behavioral Economics", description: "We use sunk cost fallacy and artificial scarcity to influence player decisions and resource management.", gradient: "from-neutral-600 to-neutral-500" },
+              { icon: Users, title: "Social Psychology", description: "We foster social interaction and community by understanding group dynamics and social behaviors.", gradient: "from-pink-500 to-pink-400" },
+              { icon: Shield, title: "Achievement Systems", description: "Reward systems and progression mechanics that maintain long-term engagement and motivation.", gradient: "from-neutral-500 to-neutral-600" },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -872,7 +872,7 @@ export default function AdAngelsLandingPage() {
       </section>
 
       {/* Token Economy Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 to-purple-900">
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 to-neutral-800">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
@@ -886,7 +886,7 @@ export default function AdAngelsLandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-pink-400 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <Coins className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -900,7 +900,7 @@ export default function AdAngelsLandingPage() {
               </div>
               
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 bg-gradient-to-r from-neutral-600 to-neutral-500 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <CheckCircle className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -983,7 +983,7 @@ export default function AdAngelsLandingPage() {
                   name: "Trevor Cangelosi",
                   designation: "Co-Founder & CEO",
                   initials: "T",
-                  gradient: "from-pink-500 to-purple-600",
+                  gradient: "from-pink-400 to-pink-500",
                   description: "Visionary leadership with legal expertise",
                   content: (
                     <div className="text-center">
@@ -1030,7 +1030,7 @@ export default function AdAngelsLandingPage() {
       </section>
 
       {/* Investment Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600">
+      <section className="py-20 px-6 bg-gradient-to-r from-yellow-600 via-blue-600 to-neutral-800">
         <div className="container mx-auto max-w-6xl text-center">
           <div className="mb-12">
             <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 text-white">
@@ -1068,7 +1068,7 @@ export default function AdAngelsLandingPage() {
       </section>
 
       {/* Investment Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-slate-900 to-purple-900/50">
+      <section className="py-20 px-6 bg-gradient-to-b from-slate-900 to-neutral-800/50">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <Badge className="mb-8 bg-green-500/10 text-green-400 border-green-500/20 hover:bg-green-500/20 font-orbitron backdrop-blur-sm">
@@ -1163,10 +1163,10 @@ export default function AdAngelsLandingPage() {
           <div className="grid md:grid-cols-4 gap-12">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-400 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
                   <Sparkles className="w-7 h-7 text-white" />
                 </div>
-                <span className="text-3xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="text-3xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
                   Ad Angels
                 </span>
               </div>
@@ -1174,7 +1174,7 @@ export default function AdAngelsLandingPage() {
                 Transforming B2B digital marketing into gamified, immersive collaboration. Where work feels like play.
               </p>
               <div className="flex items-center space-x-3 text-white/60 font-roboto text-lg">
-                <div className="w-10 h-10 bg-gradient-to-r from-pink-500/20 to-purple-600/20 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-pink-500/20 to-neutral-600/20 rounded-lg flex items-center justify-center">
                   <Mail className="w-5 h-5" />
                 </div>
                 <span>hello@adangels.com</span>
@@ -1194,17 +1194,17 @@ export default function AdAngelsLandingPage() {
             <div>
               <h3 className="font-bold mb-6 font-orbitron text-xl text-white">Connect</h3>
               <div className="flex space-x-4 mb-8">
-                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
+                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-neutral-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
                   <Twitter className="w-6 h-6" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
+                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-neutral-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
                   <Linkedin className="w-6 h-6" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
+                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-neutral-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
                   <Github className="w-6 h-6" />
                 </a>
               </div>
-              <Button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 w-full font-orbitron text-lg py-3 shadow-lg hover:shadow-pink-500/25 transition-all duration-300">
+              <Button className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 w-full font-orbitron text-lg py-3 shadow-lg hover:shadow-pink-500/25 transition-all duration-300">
                 Newsletter Signup
               </Button>
             </div>

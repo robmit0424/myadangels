@@ -35,11 +35,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 font-sans md:px-10"
+      className="w-full bg-gradient-to-br from-neutral-800 via-neutral-700 to-neutral-800 font-sans md:px-10"
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-4xl md:text-6xl mb-4 text-white max-w-4xl font-orbitron font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-6xl mb-4 text-white max-w-4xl font-orbitron font-bold bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
           Our Development Roadmap
         </h2>
         <p className="text-white/70 text-lg md:text-xl max-w-3xl font-roboto leading-relaxed">
@@ -54,7 +54,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center shadow-lg">
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 flex items-center justify-center shadow-lg">
                 <div className="h-4 w-4 rounded-full bg-white border-2 border-pink-200" />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-white font-orbitron">
@@ -81,7 +81,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-500 via-pink-500 to-cyan-400 from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-neutral-500 via-pink-500 to-neutral-300 from-[0%] via-[10%] rounded-full"
           />
         </div>
       </div>
