@@ -159,7 +159,7 @@ export default function InvestmentPage() {
               <div className="bg-green-500/10 p-4 rounded-lg">
                 <h5 className="text-lg font-bold text-green-400 font-orbitron mb-2">Token-to-Cash System</h5>
                 <p className="text-white/70 font-roboto">
-                  Full implementation of AdAngel Coins redemption for real USD, enabling freelancers to monetize their gameplay achievements.
+                                     Full implementation of AdAngel<span className="text-xs align-super">™</span> Coins redemption for real USD, enabling freelancers to monetize their gameplay achievements.
                 </p>
               </div>
               <div className="bg-green-500/10 p-4 rounded-lg">
@@ -322,7 +322,7 @@ export default function InvestmentPage() {
               >
                 <Gamepad2 className="w-5 h-5 text-white" />
               </motion.div>
-              <span className="text-2xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">Ad Angels</span>
+              <span className="text-2xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">Ad Angels<span className="text-xs align-super">™</span></span>
             </motion.div>
             <motion.div 
               initial={{ x: 30, opacity: 0 }}
@@ -847,7 +847,7 @@ export default function InvestmentPage() {
                 <Calendar className="w-12 h-12 mx-auto mb-4 text-pink-400" />
                 <h3 className="text-xl font-orbitron text-white mb-4">Join the Waitlist</h3>
                 <p className="text-white/70 font-roboto mb-6">
-                  Be the first to know when Ad Angels launches
+                  Be the first to know when Ad Angels<span className="text-xs align-super">™</span> launches
                 </p>
                 <Button 
                   className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 w-full font-orbitron"

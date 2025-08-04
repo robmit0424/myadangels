@@ -15,7 +15,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "Ad Angels - Where Work Feels Like Play",
+  title: "Ad Angels™ - Where Play Is Production",
   description: "Gamified 3D virtual workspace for digital marketers and freelancers",
 }
 

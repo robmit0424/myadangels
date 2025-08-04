@@ -228,7 +228,7 @@ export default function AdAngelsLandingPage() {
               <Sparkles className="w-6 h-6 text-white" />
             </motion.div>
             <span className="text-2xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
-              Ad Angels
+              Ad Angels<span className="text-xs align-super">™</span>
             </span>
           </motion.div>
           <motion.div 
@@ -237,21 +237,21 @@ export default function AdAngelsLandingPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="hidden md:flex items-center space-x-6"
           >
-            <motion.div
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+              <motion.div
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button 
-                variant="ghost" 
-                className="text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5 transition-all duration-200"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  variant="ghost" 
+                  className="text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5 transition-all duration-200"
                 onClick={() => window.location.href = '/investment'}
               >
                 Investment
-              </Button>
-            </motion.div>
+                </Button>
+              </motion.div>
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -296,16 +296,16 @@ export default function AdAngelsLandingPage() {
             className="md:hidden bg-black/40 backdrop-blur-xl border-t border-white/10"
           >
             <div className="container mx-auto px-6 py-4 space-y-4">
-              <Button
-                variant="ghost"
-                className="w-full text-left justify-start text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5"
-                onClick={() => {
+                <Button
+                  variant="ghost"
+                  className="w-full text-left justify-start text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5"
+                  onClick={() => {
                   window.location.href = '/investment';
-                  setMobileMenuOpen(false);
-                }}
-              >
+                    setMobileMenuOpen(false);
+                  }}
+                >
                 Investment
-              </Button>
+                </Button>
               <div className="pt-4 border-t border-white/10">
                 <Button 
                   className="w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 font-orbitron"
@@ -383,7 +383,7 @@ export default function AdAngelsLandingPage() {
             transition={{ duration: 1, delay: 1.4 }}
             className="text-6xl md:text-8xl lg:text-9xl font-bold font-orbitron mb-8 bg-gradient-to-r from-pink-400 via-neutral-300 to-pink-500 bg-clip-text text-transparent leading-tight"
           >
-            Ad Angels
+              Ad Angels<span className="text-2xl md:text-3xl lg:text-4xl align-super">™</span>
           </motion.h1>
           
           <motion.h2 
@@ -405,7 +405,7 @@ export default function AdAngelsLandingPage() {
             className="text-xl md:text-2xl text-white/70 mb-12 max-w-4xl mx-auto leading-relaxed font-roboto"
           >
             The gamified platform where freelancers earn digital coins through engaging gameplay. 
-            AdAngel coins are redeemable for real dollars and premium in-game services.
+                          AdAngel<span className="text-sm align-super">™</span> coins are redeemable for real dollars and premium in-game services.
           </motion.p>
           
           <motion.div 
@@ -635,10 +635,10 @@ export default function AdAngelsLandingPage() {
           {/* Solution Section */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
-              Ad Angels: A Radical Reimagining
+              Ad Angels<span className="text-base md:text-xl align-super">™</span>: A Radical Reimagining
             </h2>
             <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto font-roboto leading-relaxed">
-              We believe work should feel like play — intuitive, productive, and rewarding. Ad Angels replaces legacy tools with a 3D game-like workspace.
+              We believe work should feel like play — intuitive, productive, and rewarding. Ad Angels<span className="text-sm align-super">™</span> replaces legacy tools with a 3D game-like workspace.
             </p>
           </div>
           
@@ -663,7 +663,7 @@ export default function AdAngelsLandingPage() {
                 <div>
                   <h3 className="text-2xl font-bold font-orbitron mb-3 text-white">Token Rewards</h3>
                   <p className="text-white/70 font-roboto text-lg leading-relaxed">
-                    Earn AdAngel Coins for completing tasks, redeemable for cash or premium services.
+                    Earn AdAngel<span className="text-xs align-super">™</span> Coins for completing tasks, redeemable for cash or premium services.
                   </p>
                 </div>
               </div>
@@ -701,10 +701,10 @@ export default function AdAngelsLandingPage() {
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-pink-400 to-neutral-400 bg-clip-text text-transparent">
-              Game Psychology in AdAngels Design
+              Game Psychology in AdAngels<span className="text-base md:text-xl align-super">™</span> Design
             </h2>
             <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto font-roboto leading-relaxed">
-              How we use motivational, emotional, and cognitive science to make work feel like play
+              We use motivational, emotional, and cognitive science to make work feel like play
             </p>
           </div>
           
@@ -765,10 +765,10 @@ export default function AdAngelsLandingPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold font-orbitron mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              AdAngel Token Economy
+              AdAngel<span className="text-base md:text-xl align-super">™</span> Token Economy
             </h2>
             <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto font-roboto leading-relaxed">
-              AdAngel Coins power a closed-loop, utility-first economy within the platform. Advertisers purchase tokens to fund campaigns; freelancers complete quests and earn tokens as rewards.
+              AdAngel<span className="text-sm align-super">™</span> Coins power a closed-loop, utility-first economy within the platform. Advertisers purchase tokens to fund campaigns; freelancers complete quests and earn tokens as rewards.
             </p>
           </div>
           
@@ -854,39 +854,39 @@ export default function AdAngelsLandingPage() {
               viewport={{ once: true }}
               className="text-xl md:text-2xl text-white/70 font-roboto mb-8"
             >
-              The visionary team behind Ad Angels
+              The visionary team behind Ad Angels<span className="text-sm align-super">™</span>
             </motion.p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-              {
-                id: 1,
-                name: "Trevor Cangelosi",
-                designation: "Co-Founder & CEO",
+                {
+                  id: 1,
+                  name: "Trevor Cangelosi",
+                  designation: "Co-Founder & CEO",
                 image: "/Trevor.jpg",
-                gradient: "from-pink-400 to-pink-500",
-                description: "Visionary leadership with legal expertise",
+                  gradient: "from-pink-400 to-pink-500",
+                  description: "Visionary leadership with legal expertise",
                 quote: "Former attorney with 20+ years of experience and law firm founder, now channeling a passion for playful productivity into visionary leadership.",
                 skills: ["Legal Strategy", "Business Development", "Leadership"]
-              },
-              {
-                id: 2,
-                name: "Molley-Kate Grubbs",
-                designation: "Co-Founder & CMO",
+                },
+                {
+                  id: 2,
+                  name: "Molley-Kate Grubbs",
+                  designation: "Co-Founder & CMO",
                 image: "/Molley.jpg",
-                gradient: "from-cyan-500 to-blue-600",
-                description: "Strategic marketing across digital ecosystem",
+                  gradient: "from-cyan-500 to-blue-600",
+                  description: "Strategic marketing across digital ecosystem",
                 quote: "Strategic marketing leader with a deep command of brand, growth and performance across the digital ecosystem.",
                 skills: ["Digital Marketing", "Brand Strategy", "Growth Hacking"]
-              },
-              {
-                id: 3,
-                name: "Robby Mitchell",
-                designation: "Co-Founder & CAO",
+                },
+                {
+                  id: 3,
+                  name: "Robby Mitchell",
+                  designation: "Co-Founder & CAO",
                 image: "/Robby.jpg",
-                gradient: "from-green-500 to-emerald-600",
-                description: "Technical depth meets entrepreneurial experience",
+                  gradient: "from-green-500 to-emerald-600",
+                  description: "Technical depth meets entrepreneurial experience",
                 quote: "Seasoned developer and AI specialist with a unique blend of technical depth and entrepreneurial experience.",
                 skills: ["AI Development", "Full Stack", "Technical Architecture"]
               }
@@ -1035,7 +1035,7 @@ export default function AdAngelsLandingPage() {
                       className={`absolute inset-0 bg-gradient-to-br ${founder.gradient} opacity-0 group-hover:opacity-10 transition-all duration-300 rounded-3xl`}
                     />
                   </div>
-                </motion.div>
+          </motion.div>
               </motion.div>
             ))}
           </div>
@@ -1182,7 +1182,7 @@ export default function AdAngelsLandingPage() {
                   <Sparkles className="w-7 h-7 text-white" />
                 </div>
                 <span className="text-3xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
-                  Ad Angels
+                  Ad Angels<span className="text-sm align-super">™</span>
                 </span>
               </div>
               <p className="text-white/70 mb-8 max-w-md font-roboto text-lg leading-relaxed">
@@ -1219,7 +1219,7 @@ export default function AdAngelsLandingPage() {
           
           <div className="mt-16 pt-8 border-t border-white/10">
             <div className="flex flex-col md:flex-row justify-between items-center text-white/60 font-roboto">
-              <p className="text-lg">&copy; 2024 Ad Angels. All rights reserved.</p>
+              <p className="text-lg">&copy; 2024 Ad Angels<span className="text-xs align-super">™</span>. All rights reserved.</p>
               <div className="flex space-x-8 mt-6 md:mt-0">
                 <span className="text-white/50 cursor-not-allowed text-lg">Privacy Policy</span>
                 <span className="text-white/50 cursor-not-allowed text-lg">Terms of Service</span>
