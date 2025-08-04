@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
+import Image from "next/image"
+import toast, { Toaster } from 'react-hot-toast'
 import { 
   Play, 
   Rocket, 
@@ -18,9 +20,7 @@ import {
   Globe, 
   CheckCircle, 
   X, 
-  Twitter, 
-  Linkedin, 
-  Github, 
+ 
   Mail, 
   Zap,
   Brain,
@@ -181,99 +181,28 @@ const EnhancedButton = ({ children, className = "", variant = "primary", ...prop
   );
 };
 
-// Card Stack Component (Aceternity UI style)
-type CardStackItem = {
-  id: number;
-  name: string;
-  designation: string;
-  content: React.ReactNode;
-  gradient: string;
-  initials: string;
-  description: string;
-};
 
-const CardStack = ({
-  items,
-  offset = 10,
-  scaleFactor = 0.06,
-}: {
-  items: CardStackItem[];
-  offset?: number;
-  scaleFactor?: number;
-}) => {
-  const CARD_OFFSET = offset;
-  const SCALE_FACTOR = scaleFactor;
-  const [cards, setCards] = useState<CardStackItem[]>(items);
-
-  useEffect(() => {
-    let interval: any;
-    const startFlipping = () => {
-      interval = setInterval(() => {
-        setCards((prevCards: CardStackItem[]) => {
-          const newArray = [...prevCards];
-          newArray.unshift(newArray.pop()!);
-          return newArray;
-        });
-      }, 4000);
-    };
-
-    startFlipping();
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="relative h-80 w-80 md:h-96 md:w-96 mx-auto">
-      {cards.map((card, index) => {
-        return (
-          <motion.div
-            key={card.id}
-            className="absolute bg-white/5 backdrop-blur-xl border border-white/10 h-80 w-80 md:h-96 md:w-96 rounded-3xl p-8 shadow-xl flex flex-col justify-between"
-            style={{
-              transformOrigin: "top center",
-            }}
-            animate={{
-              top: index * -CARD_OFFSET,
-              scale: 1 - index * SCALE_FACTOR,
-              zIndex: cards.length - index,
-            }}
-            transition={{
-              duration: 0.5,
-              ease: "easeInOut",
-            }}
-          >
-            <div className="text-center">
-              <div className={`w-20 h-20 bg-gradient-to-r ${card.gradient} rounded-full mx-auto mb-6 flex items-center justify-center text-white font-bold text-2xl font-orbitron shadow-lg`}>
-                {card.initials}
-              </div>
-              <div className="text-white/80 font-roboto leading-relaxed">
-                {card.content}
-              </div>
-            </div>
-            <div className="text-center">
-              <p className="text-white font-bold text-xl font-orbitron mb-1">
-                {card.name}
-              </p>
-              <p className="text-cyan-400 font-medium font-orbitron mb-3">
-                {card.designation}
-              </p>
-              <p className="text-white/60 text-sm font-roboto">
-                {card.description}
-              </p>
-            </div>
-          </motion.div>
-        );
-      })}
-    </div>
-  );
-};
 
 export default function AdAngelsLandingPage() {
   const statsRef = useRef(null)
   const statsInView = useInView(statsRef, { once: true, amount: 0.1 })
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   
+  const handleWaitlistClick = () => {
+    toast.error('Waitlist currently unavailable', {
+      duration: 3000,
+      position: 'top-center',
+      style: {
+        background: '#1f2937',
+        color: '#fff',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+      },
+    })
+  }
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-neutral-800 via-neutral-700 to-neutral-800 relative overflow-hidden">
+      <Toaster />
       <SpotlightEffect />
       <FloatingElements />
       {/* Navigation */}
@@ -308,63 +237,32 @@ export default function AdAngelsLandingPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="hidden md:flex items-center space-x-6"
           >
-            {[
-              { name: "About", href: "#about" },
-              { name: "Demo", href: "#demo" },
-              { name: "Features", href: "#features" },
-              { name: "Team", href: "#team" },
-              { name: "Investment", href: "/investment" }
-            ].map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button 
-                  variant="ghost" 
-                  className="text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5 transition-all duration-200"
-                  onClick={() => {
-                    if (item.href.startsWith('#')) {
-                      const element = document.querySelector(item.href);
-                      element?.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      window.location.href = item.href;
-                    }
-                  }}
-                >
-                  {item.name}
-                </Button>
-              </motion.div>
-            ))}
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.4, delay: 1.1 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Button 
-                variant="outline" 
-                className="border-white/20 text-white hover:bg-white/10 font-orbitron transition-all duration-200 mr-3"
-                onClick={() => {
-                  const element = document.querySelector('#contact');
-                  element?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                variant="ghost" 
+                className="text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5 transition-all duration-200"
+                onClick={() => window.location.href = '/investment'}
               >
-                Contact
+                Investment
               </Button>
             </motion.div>
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.4, delay: 1.2 }}
+              transition={{ duration: 0.4, delay: 0.8 }}
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(236, 72, 153, 0.3)" }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 font-orbitron shadow-lg hover:shadow-pink-500/25 transition-all duration-300">
+              <Button 
+                className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 font-orbitron shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+                onClick={handleWaitlistClick}
+              >
                 Join Waitlist
               </Button>
             </motion.div>
@@ -398,33 +296,24 @@ export default function AdAngelsLandingPage() {
             className="md:hidden bg-black/40 backdrop-blur-xl border-t border-white/10"
           >
             <div className="container mx-auto px-6 py-4 space-y-4">
-              {[
-                { name: "About", href: "#about" },
-                { name: "Demo", href: "#demo" },
-                { name: "Features", href: "#features" },
-                { name: "Team", href: "#team" },
-                { name: "Investment", href: "/investment" },
-                { name: "Contact", href: "#contact" }
-              ].map((item) => (
-                <Button
-                  key={item.name}
-                  variant="ghost"
-                  className="w-full text-left justify-start text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5"
+              <Button
+                variant="ghost"
+                className="w-full text-left justify-start text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5"
+                onClick={() => {
+                  window.location.href = '/investment';
+                  setMobileMenuOpen(false);
+                }}
+              >
+                Investment
+              </Button>
+              <div className="pt-4 border-t border-white/10">
+                <Button 
+                  className="w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 font-orbitron"
                   onClick={() => {
-                    if (item.href.startsWith('#')) {
-                      const element = document.querySelector(item.href);
-                      element?.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      window.location.href = item.href;
-                    }
+                    handleWaitlistClick();
                     setMobileMenuOpen(false);
                   }}
                 >
-                  {item.name}
-                </Button>
-              ))}
-              <div className="pt-4 border-t border-white/10">
-                <Button className="w-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 font-orbitron">
                   Join Waitlist
                 </Button>
               </div>
@@ -969,63 +858,187 @@ export default function AdAngelsLandingPage() {
             </motion.p>
           </div>
           
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="flex justify-center"
-          >
-            <CardStack
-              items={[
-                {
-                  id: 1,
-                  name: "Trevor Cangelosi",
-                  designation: "Co-Founder & CEO",
-                  initials: "T",
-                  gradient: "from-pink-400 to-pink-500",
-                  description: "Visionary leadership with legal expertise",
-                  content: (
-                    <div className="text-center">
-                      <p className="text-white/80 font-roboto leading-relaxed">
-                        "Former attorney with 20+ years of experience and law firm founder, now channeling a passion for playful productivity into visionary leadership."
-                      </p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {[
+              {
+                id: 1,
+                name: "Trevor Cangelosi",
+                designation: "Co-Founder & CEO",
+                image: "/Trevor.jpg",
+                gradient: "from-pink-400 to-pink-500",
+                description: "Visionary leadership with legal expertise",
+                quote: "Former attorney with 20+ years of experience and law firm founder, now channeling a passion for playful productivity into visionary leadership.",
+                skills: ["Legal Strategy", "Business Development", "Leadership"]
+              },
+              {
+                id: 2,
+                name: "Molley-Kate Grubbs",
+                designation: "Co-Founder & CMO",
+                image: "/Molley.jpg",
+                gradient: "from-cyan-500 to-blue-600",
+                description: "Strategic marketing across digital ecosystem",
+                quote: "Strategic marketing leader with a deep command of brand, growth and performance across the digital ecosystem.",
+                skills: ["Digital Marketing", "Brand Strategy", "Growth Hacking"]
+              },
+              {
+                id: 3,
+                name: "Robby Mitchell",
+                designation: "Co-Founder & CAO",
+                image: "/Robby.jpg",
+                gradient: "from-green-500 to-emerald-600",
+                description: "Technical depth meets entrepreneurial experience",
+                quote: "Seasoned developer and AI specialist with a unique blend of technical depth and entrepreneurial experience.",
+                skills: ["AI Development", "Full Stack", "Technical Architecture"]
+              }
+            ].map((founder, index) => (
+              <motion.div
+                key={founder.id}
+                initial={{ y: 50, opacity: 0, rotateY: -15 }}
+                whileInView={{ y: 0, opacity: 1, rotateY: 0 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.2 + index * 0.2,
+                  ease: "easeOut"
+                }}
+                viewport={{ once: true }}
+                className="group perspective-1000"
+              >
+                <motion.div
+                  whileHover={{ 
+                    rotateY: 5,
+                    scale: 1.05,
+                    z: 50,
+                    transition: { duration: 0.3 }
+                  }}
+                  className="relative preserve-3d"
+                >
+                  {/* Glowing backdrop */}
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-r ${founder.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-all duration-500`}
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.2, 0.4, 0.2],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      delay: index * 0.5,
+                    }}
+                  />
+                  
+                  {/* Main card */}
+                  <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden group-hover:border-white/20 transition-all duration-300">
+                    {/* Card content */}
+                    <div className="p-8">
+                      {/* Header with photo */}
+                      <div className="text-center mb-6">
+                        <motion.div 
+                          className="relative w-32 h-32 mx-auto mb-6"
+                          whileHover={{ 
+                            scale: 1.1,
+                            transition: { duration: 0.3 }
+                          }}
+                        >
+                          {/* Photo frame with gradient border */}
+                          <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${founder.gradient} p-1`}>
+                            <div className="w-full h-full rounded-full overflow-hidden bg-black">
+                              <Image
+                                src={founder.image}
+                                alt={founder.name}
+                                width={128}
+                                height={128}
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                priority
+                              />
+                            </div>
+                          </div>
+                          
+                          {/* Rotating gradient ring */}
+                          <motion.div
+                            className={`absolute inset-0 rounded-full bg-gradient-to-r ${founder.gradient} blur-md opacity-50`}
+                            animate={{
+                              rotate: [0, 360],
+                              scale: [1, 1.2, 1],
+                            }}
+                            transition={{
+                              duration: 6,
+                              repeat: Infinity,
+                              ease: "linear",
+                              delay: index * 1,
+                            }}
+                          />
+                        </motion.div>
+                        
+                        <motion.h3 
+                          className="text-2xl font-bold text-white font-orbitron mb-2"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                        >
+                          {founder.name}
+                        </motion.h3>
+                        
+                        <motion.p 
+                          className={`text-lg font-medium font-orbitron mb-3 bg-gradient-to-r ${founder.gradient} bg-clip-text text-transparent`}
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                        >
+                          {founder.designation}
+                        </motion.p>
+                        
+                        <motion.p 
+                          className="text-white/60 text-sm font-roboto mb-4"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                        >
+                          {founder.description}
+                        </motion.p>
+                      </div>
+                      
+                      {/* Skills */}
+                      <motion.div
+                        className="mb-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                      >
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {founder.skills.map((skill, i) => (
+                            <span 
+                              key={i}
+                              className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${founder.gradient} bg-opacity-20 text-white/80 border border-white/10`}
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </motion.div>
+                      
+                      {/* Quote */}
+                      <motion.div
+                        className="relative"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                      >
+                        <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-4"></div>
+                        <p className="text-white/70 text-sm font-roboto leading-relaxed italic text-center">
+                          "{founder.quote}"
+                        </p>
+                      </motion.div>
                     </div>
-                  ),
-                },
-                {
-                  id: 2,
-                  name: "Molley-Kate Grubbs",
-                  designation: "Co-Founder & CMO",
-                  initials: "MK",
-                  gradient: "from-cyan-500 to-blue-600",
-                  description: "Strategic marketing across digital ecosystem",
-                  content: (
-                    <div className="text-center">
-                      <p className="text-white/80 font-roboto leading-relaxed">
-                        "Strategic marketing leader with a deep command of brand, growth and performance across the digital ecosystem."
-                      </p>
-                    </div>
-                  ),
-                },
-                {
-                  id: 3,
-                  name: "Robby Mitchell",
-                  designation: "Co-Founder & CAO",
-                  initials: "R",
-                  gradient: "from-green-500 to-emerald-600",
-                  description: "Technical depth meets entrepreneurial experience",
-                  content: (
-                    <div className="text-center">
-                      <p className="text-white/80 font-roboto leading-relaxed">
-                        "Seasoned developer and AI specialist with a unique blend of technical depth and entrepreneurial experience."
-                      </p>
-                    </div>
-                  ),
-                },
-              ]}
-            />
-          </motion.div>
+                    
+                    {/* Hover effect overlay */}
+                    <motion.div
+                      className={`absolute inset-0 bg-gradient-to-br ${founder.gradient} opacity-0 group-hover:opacity-10 transition-all duration-300 rounded-3xl`}
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1144,9 +1157,11 @@ export default function AdAngelsLandingPage() {
 
           <div className="text-center">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-8 py-4 text-lg font-orbitron shadow-lg hover:shadow-green-500/25 transition-all duration-300">
-                <Calendar className="w-5 h-5 mr-2" />
-                Schedule a Meeting
+              <Button 
+                className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-8 py-4 text-lg font-orbitron shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+                onClick={handleWaitlistClick}
+              >
+                Join Waitlist
               </Button>
               <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg font-orbitron">
                 <FileText className="w-5 h-5 mr-2" />
@@ -1171,7 +1186,7 @@ export default function AdAngelsLandingPage() {
                 </span>
               </div>
               <p className="text-white/70 mb-8 max-w-md font-roboto text-lg leading-relaxed">
-                Transforming B2B digital marketing into gamified, immersive collaboration. Where work feels like play.
+                Transforming B2B digital marketing into gamified, immersive collaboration. Where play is production.
               </p>
               <div className="flex items-center space-x-3 text-white/60 font-roboto text-lg">
                 <div className="w-10 h-10 bg-gradient-to-r from-pink-500/20 to-neutral-600/20 rounded-lg flex items-center justify-center">
@@ -1184,29 +1199,21 @@ export default function AdAngelsLandingPage() {
             <div>
               <h3 className="font-bold mb-6 font-orbitron text-xl text-white">Product</h3>
               <ul className="space-y-4 text-white/70 font-roboto text-lg">
-                <li><a href="#" className="hover:text-pink-400 transition-colors hover:translate-x-1 transform duration-200 inline-block">Features</a></li>
-                <li><a href="#" className="hover:text-pink-400 transition-colors hover:translate-x-1 transform duration-200 inline-block">Demo</a></li>
-                <li><a href="#" className="hover:text-pink-400 transition-colors hover:translate-x-1 transform duration-200 inline-block">Pricing</a></li>
-                <li><a href="#" className="hover:text-pink-400 transition-colors hover:translate-x-1 transform duration-200 inline-block">Roadmap</a></li>
+                <li><span className="text-white/50 cursor-not-allowed">Features</span></li>
+                <li><span className="text-white/50 cursor-not-allowed">Demo</span></li>
+                <li><span className="text-white/50 cursor-not-allowed">Pricing</span></li>
+                <li><span className="text-white/50 cursor-not-allowed">Roadmap</span></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-bold mb-6 font-orbitron text-xl text-white">Connect</h3>
-              <div className="flex space-x-4 mb-8">
-                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-neutral-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
-                  <Twitter className="w-6 h-6" />
-                </a>
-                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-neutral-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a href="#" className="w-12 h-12 bg-gradient-to-r from-pink-500/10 to-neutral-600/10 rounded-xl flex items-center justify-center text-white/70 hover:text-pink-400 hover:bg-pink-500/20 transition-all duration-300 transform hover:scale-110">
-                  <Github className="w-6 h-6" />
-                </a>
-              </div>
-              <Button className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 w-full font-orbitron text-lg py-3 shadow-lg hover:shadow-pink-500/25 transition-all duration-300">
-                Newsletter Signup
-              </Button>
+              <h3 className="font-bold mb-6 font-orbitron text-xl text-white">Company</h3>
+              <ul className="space-y-4 text-white/70 font-roboto text-lg">
+                <li><a href="/investment" className="hover:text-pink-400 transition-colors hover:translate-x-1 transform duration-200 inline-block">Investment</a></li>
+                <li><span className="text-white/50 cursor-not-allowed">About Us</span></li>
+                <li><span className="text-white/50 cursor-not-allowed">Careers</span></li>
+                <li><span className="text-white/50 cursor-not-allowed">Press</span></li>
+              </ul>
             </div>
           </div>
           
@@ -1214,9 +1221,9 @@ export default function AdAngelsLandingPage() {
             <div className="flex flex-col md:flex-row justify-between items-center text-white/60 font-roboto">
               <p className="text-lg">&copy; 2024 Ad Angels. All rights reserved.</p>
               <div className="flex space-x-8 mt-6 md:mt-0">
-                <a href="#" className="hover:text-pink-400 transition-colors text-lg">Privacy Policy</a>
-                <a href="#" className="hover:text-pink-400 transition-colors text-lg">Terms of Service</a>
-                <a href="#" className="hover:text-pink-400 transition-colors text-lg">Cookie Policy</a>
+                <span className="text-white/50 cursor-not-allowed text-lg">Privacy Policy</span>
+                <span className="text-white/50 cursor-not-allowed text-lg">Terms of Service</span>
+                <span className="text-white/50 cursor-not-allowed text-lg">Contact</span>
               </div>
             </div>
           </div>

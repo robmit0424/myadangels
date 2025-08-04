@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import toast, { Toaster } from 'react-hot-toast'
 import { Timeline } from "@/components/ui/timeline"
 import { 
   DollarSign, 
@@ -33,6 +34,18 @@ export default function InvestmentPage() {
   const tableRef = useRef(null)
   const heroInView = useInView(heroRef, { once: false, amount: 0.1 })
   const tableInView = useInView(tableRef, { once: false, amount: 0.1 })
+  
+  const handleWaitlistClick = () => {
+    toast.error('Waitlist currently unavailable', {
+      duration: 3000,
+      position: 'top-center',
+      style: {
+        background: '#1f2937',
+        color: '#fff',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+      },
+    })
+  }
 
   const timelineData = [
     {
@@ -285,6 +298,7 @@ export default function InvestmentPage() {
   
   return (
     <div className="min-h-screen gradient-bg">
+      <Toaster />
       {/* Header */}
       <motion.header 
         initial={{ y: -80, opacity: 0 }}
@@ -316,33 +330,10 @@ export default function InvestmentPage() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex items-center space-x-4"
             >
-              {[
-                { name: "About", href: "/#about" },
-                { name: "Demo", href: "/#demo" },
-                { name: "Features", href: "/#features" },
-                { name: "Team", href: "/#team" }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Button 
-                    variant="ghost" 
-                    className="text-white/70 hover:text-pink-400 font-orbitron hover:bg-white/5 transition-all duration-200"
-                    onClick={() => window.location.href = item.href}
-                  >
-                    {item.name}
-                  </Button>
-                </motion.div>
-              ))}
               <motion.div
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.8 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -354,13 +345,15 @@ export default function InvestmentPage() {
               <motion.div
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 1.0 }}
-                whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(34, 197, 94, 0.4)" }}
+                transition={{ duration: 0.4, delay: 0.8 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(236, 72, 153, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 font-orbitron">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Schedule Meeting
+                <Button 
+                  className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 font-orbitron shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+                  onClick={handleWaitlistClick}
+                >
+                  Join Waitlist
                 </Button>
               </motion.div>
             </motion.div>
@@ -539,7 +532,7 @@ export default function InvestmentPage() {
               className="relative group"
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-xl blur-xl opacity-70 group-hover:opacity-100"
+                className="absolute inset-0 bg-gradient-to-r from-pink-400 to-pink-500 rounded-xl blur-xl opacity-70 group-hover:opacity-100"
                 animate={{
                   scale: [1, 1.1, 1],
                 }}
@@ -548,15 +541,17 @@ export default function InvestmentPage() {
                   repeat: Infinity,
                 }}
               />
-              <Button className="relative bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white px-10 py-6 text-xl font-orbitron shadow-2xl transition-all duration-300 overflow-hidden group">
+              <Button 
+                className="relative bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white px-10 py-6 text-xl font-orbitron shadow-2xl transition-all duration-300 overflow-hidden group"
+                onClick={handleWaitlistClick}
+              >
                 <motion.div
                   className="absolute inset-0 bg-white/10"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.6 }}
                 />
-                <Calendar className="w-6 h-6 mr-3 relative z-10" />
-                <span className="relative z-10">Schedule a Meeting</span>
+                <span className="relative z-10">Join Waitlist</span>
               </Button>
             </motion.div>
 
@@ -849,13 +844,16 @@ export default function InvestmentPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8">
               <CardContent className="text-center">
-                <Calendar className="w-12 h-12 mx-auto mb-4 text-green-400" />
-                <h3 className="text-xl font-orbitron text-white mb-4">Schedule a Meeting</h3>
+                <Calendar className="w-12 h-12 mx-auto mb-4 text-pink-400" />
+                <h3 className="text-xl font-orbitron text-white mb-4">Join the Waitlist</h3>
                 <p className="text-white/70 font-roboto mb-6">
-                  Book a live demo and discussion with our founding team
+                  Be the first to know when Ad Angels launches
                 </p>
-                <Button className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 w-full font-orbitron">
-                  Book Meeting
+                <Button 
+                  className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 w-full font-orbitron"
+                  onClick={handleWaitlistClick}
+                >
+                  Join Waitlist
                 </Button>
               </CardContent>
             </Card>
