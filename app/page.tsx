@@ -1192,7 +1192,7 @@ export default function AdAngelsLandingPage() {
                 <div className="w-10 h-10 bg-gradient-to-r from-pink-500/20 to-neutral-600/20 rounded-lg flex items-center justify-center">
                   <Mail className="w-5 h-5" />
                 </div>
-                <span>hello@adangels.com</span>
+                <span>info@adangels.com</span>
               </div>
             </div>
             
