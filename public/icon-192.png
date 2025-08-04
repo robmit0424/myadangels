@@ -1,0 +1,29 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="96" cy="96" r="90" fill="url(#gradient)" stroke="#ffffff" stroke-width="4"/>
+  
+  <!-- Main sparkle/star -->
+  <g transform="translate(96,96)" fill="white">
+    <!-- Central diamond -->
+    <polygon points="0,-36 12,-12 36,0 12,12 0,36 -12,12 -36,0 -12,-12" opacity="1"/>
+    
+    <!-- Medium sparkles around -->
+    <circle cx="-48" cy="-48" r="6" opacity="0.8"/>
+    <circle cx="48" cy="-48" r="6" opacity="0.8"/>
+    <circle cx="-48" cy="48" r="6" opacity="0.8"/>
+    <circle cx="48" cy="48" r="6" opacity="0.8"/>
+    
+    <!-- Small sparkles -->
+    <circle cx="-60" cy="0" r="3" opacity="0.6"/>
+    <circle cx="60" cy="0" r="3" opacity="0.6"/>
+    <circle cx="0" cy="-60" r="3" opacity="0.6"/>
+    <circle cx="0" cy="60" r="3" opacity="0.6"/>
+  </g>
+</svg>

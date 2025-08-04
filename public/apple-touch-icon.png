@@ -1,0 +1,39 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background with rounded corners for iOS -->
+  <rect width="180" height="180" rx="20" fill="url(#gradient)"/>
+  
+  <!-- Main sparkle/star -->
+  <g transform="translate(90,90)" fill="white">
+    <!-- Central diamond -->
+    <polygon points="0,-35 12,-12 35,0 12,12 0,35 -12,12 -35,0 -12,-12" opacity="1"/>
+    
+    <!-- Medium sparkles around -->
+    <circle cx="-45" cy="-45" r="6" opacity="0.8"/>
+    <circle cx="45" cy="-45" r="6" opacity="0.8"/>
+    <circle cx="-45" cy="45" r="6" opacity="0.8"/>
+    <circle cx="45" cy="45" r="6" opacity="0.8"/>
+    
+    <!-- Small sparkles -->
+    <circle cx="-60" cy="0" r="4" opacity="0.6"/>
+    <circle cx="60" cy="0" r="4" opacity="0.6"/>
+    <circle cx="0" cy="-60" r="4" opacity="0.6"/>
+    <circle cx="0" cy="60" r="4" opacity="0.6"/>
+    
+    <!-- Tiny sparkles -->
+    <circle cx="-25" cy="-60" r="2" opacity="0.4"/>
+    <circle cx="25" cy="-60" r="2" opacity="0.4"/>
+    <circle cx="-25" cy="60" r="2" opacity="0.4"/>
+    <circle cx="25" cy="60" r="2" opacity="0.4"/>
+    <circle cx="-60" cy="-25" r="2" opacity="0.4"/>
+    <circle cx="60" cy="-25" r="2" opacity="0.4"/>
+    <circle cx="-60" cy="25" r="2" opacity="0.4"/>
+    <circle cx="60" cy="25" r="2" opacity="0.4"/>
+  </g>
+</svg>
