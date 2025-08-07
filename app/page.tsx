@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { 
   Sparkles,
@@ -52,6 +52,7 @@ const FloatingElements = () => {
 export default function ComingSoonPage() {
   const [email, setEmail] = useState("")
   const [showDevMode, setShowDevMode] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -66,6 +67,13 @@ export default function ComingSoonPage() {
                          window.location.hostname === '127.0.0.1' ||
                          window.location.hostname === '[::1]'
       setShowDevMode(isLocalhost)
+    }
+  }, [])
+
+  useEffect(() => {
+    // Set video playback rate to 100%
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.0
     }
   }, [])
 
@@ -109,6 +117,30 @@ export default function ComingSoonPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-pink-50 to-white relative overflow-hidden flex items-center justify-center py-4 sm:py-6">
+      {/* Mountains Video Background */}
+      <div className="absolute inset-0 opacity-85">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          className="w-full h-full object-cover"
+          style={{
+            filter: 'brightness(0.8)',
+            transform: 'scale(1.05)',
+            transformOrigin: 'center center'
+          }}
+        >
+          <source src="/mountainszoom.mp4" type="video/mp4" />
+          {/* Fallback to image if video fails to load */}
+          <div 
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/mountains.jpeg')"
+            }}
+          />
+        </video>
+      </div>
       <Toaster />
       <FloatingElements />
       
@@ -138,40 +170,17 @@ export default function ComingSoonPage() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Logo */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, type: "spring" }}
-            className="mb-6 sm:mb-8"
-          >
-            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 mx-auto mb-3 sm:mb-4 md:mb-6 relative">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 blur-xl"
-              />
-              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <Image
-                  src="/adAngelsLogo.jpg"
-                  alt="Ad Angels Logo"
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-cover"
-                  priority
-                />
-              </div>
-            </div>
-          </motion.div>
+      
+        
 
           {/* Title */}
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-orbitron mb-2 sm:mb-3 md:mb-4 bg-gradient-to-r from-pink-600 via-pink-500 to-pink-400 bg-clip-text text-transparent leading-tight px-1 sm:px-2 md:px-0 max-w-full"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-orbitron mb-2 sm:mb-3 md:mb-4 text-white leading-tight px-1 sm:px-2 md:px-0 max-w-full drop-shadow-2xl"
           >
-            Ad Angels<span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl align-super">™</span>
+            AdAngels<span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl align-super">™</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -179,41 +188,21 @@ export default function ComingSoonPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-pink-800/90 mb-4 sm:mb-6 lg:mb-8 font-roboto px-4"
+            className="text-base italic sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/95 mb-4 sm:mb-6 lg:mb-8 font-roboto px-4 drop-shadow-xl"
           >
-            Where marketing is magic, and magic is play
+            Where Marketing is Magic and Production is Play
           </motion.p>
           {/* Description */}
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-pink-700/80 mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-2xl mx-auto font-roboto leading-relaxed px-4"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-2xl mx-auto font-roboto leading-relaxed px-4 drop-shadow-lg"
           >
             We're building the future of work — a 3D virtual workspace where freelancers 
             earn digital coins through engaging gameplay. Where play is production.
           </motion.p>
 
-          {/* Countdown Timer */}
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-2xl mx-auto px-4"
-          >
-            {Object.entries(timeLeft).map(([unit, value]) => (
-              <div key={unit} className="text-center">
-                <div className="bg-white/80 backdrop-blur-xl border border-pink-200 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold font-orbitron bg-gradient-to-r from-pink-600 to-pink-400 bg-clip-text text-transparent">
-                    {value.toString().padStart(2, '0')}
-                  </div>
-                  <div className="text-xs sm:text-sm md:text-base text-pink-600/70 mt-1 sm:mt-2 font-roboto capitalize">
-                    {unit}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
 
           {/* Email Signup */}
           <motion.div
@@ -242,32 +231,10 @@ export default function ComingSoonPage() {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </form>
-            <p className="text-xs sm:text-sm text-pink-600/70 mt-3 sm:mt-4 font-roboto text-center">
-              Be the first to know when we launch. No spam, we promise.
-            </p>
+            
           </motion.div>
 
-          {/* Features Preview */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16 pb-16 sm:pb-20 md:pb-24 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-3xl mx-auto px-4"
-          >
-            {[
-              { icon: Sparkles, text: "Gamified Workspace" },
-              { icon: Mail, text: "Token Rewards" },
-              { icon: ArrowRight, text: "AI Copilots" }
-            ].map((feature, i) => (
-              <div
-                key={i}
-                className="bg-white/60 backdrop-blur-xl border border-pink-200 rounded-lg sm:rounded-xl p-4 sm:p-5 flex items-center justify-center gap-2 shadow-md hover:shadow-lg hover:bg-white/70 transition-all duration-300 min-h-[60px] sm:min-h-[80px]"
-              >
-                <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-pink-400 flex-shrink-0" />
-                <span className="text-pink-700 font-roboto text-sm sm:text-base font-medium">{feature.text}</span>
-              </div>
-            ))}
-          </motion.div>
+        
         </div>
       </div>
 
@@ -276,9 +243,9 @@ export default function ComingSoonPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 left-0 right-0 text-center text-pink-600/70 font-roboto px-4"
+        className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 left-0 right-0 text-center text-white/80 font-roboto px-4 drop-shadow-lg"
       >
-        <p className="text-xs sm:text-sm md:text-base">&copy; 2025 Ad Angels™. All rights reserved.</p>
+        <p className="text-xs sm:text-sm md:text-base font-medium">&copy; 2025 Ad Angels™. All rights reserved.</p>
       </motion.div>
 
       {/* Dev Mode Button - Only visible on localhost */}
