@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import Image from "next/image"
 import toast, { Toaster } from 'react-hot-toast'
 import { Timeline } from "@/components/ui/timeline"
 import { 
@@ -316,11 +317,18 @@ export default function InvestmentPage() {
               onClick={() => window.location.href = '/'}
             >
               <motion.div 
-                whileHover={{ scale: 1.1, rotate: 180 }}
+                whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.3 }}
-                className="w-10 h-10 bg-gradient-to-r from-pink-400 to-pink-500 rounded-lg flex items-center justify-center"
+                className="w-10 h-10 rounded-lg overflow-hidden shadow-lg"
               >
-                <Gamepad2 className="w-5 h-5 text-white" />
+                <Image
+                  src="/adAngelsLogo.jpg"
+                  alt="Ad Angels Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </motion.div>
               <span className="text-2xl font-bold font-orbitron bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">Ad Angels<span className="text-xs align-super">™</span></span>
             </motion.div>
