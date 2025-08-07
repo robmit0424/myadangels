@@ -35,35 +35,35 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-gradient-to-br from-neutral-800 via-neutral-700 to-neutral-800 font-sans md:px-10"
+      className="w-full bg-gradient-to-br from-white via-pink-50 to-white font-sans px-4 sm:px-6 md:px-8 lg:px-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-4xl md:text-6xl mb-4 text-white max-w-4xl font-orbitron font-bold bg-gradient-to-r from-pink-400 to-neutral-300 bg-clip-text text-transparent">
+      <div className="max-w-7xl mx-auto py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 max-w-4xl font-orbitron font-bold bg-gradient-to-r from-pink-600 to-pink-400 bg-clip-text text-transparent leading-tight">
           Our Development Roadmap
         </h2>
-        <p className="text-white/70 text-lg md:text-xl max-w-3xl font-roboto leading-relaxed">
+        <p className="text-pink-700/80 text-base sm:text-lg md:text-xl max-w-3xl font-roboto leading-relaxed">
           From vision to reality: Key milestones in our journey to revolutionize digital marketing workspaces
         </p>
       </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+      <div ref={ref} className="relative max-w-7xl mx-auto pb-12 sm:pb-16 md:pb-20">
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
+            className="flex justify-start pt-8 sm:pt-12 md:pt-20 lg:pt-40 gap-4 sm:gap-6 md:gap-8 lg:gap-10"
           >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 flex items-center justify-center shadow-lg">
-                <div className="h-4 w-4 rounded-full bg-white border-2 border-pink-200" />
+            <div className="sticky flex flex-col md:flex-row z-40 items-center top-20 sm:top-32 md:top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 absolute left-2 sm:left-3 md:left-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 flex items-center justify-center shadow-lg">
+                <div className="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-white border-2 border-pink-200" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-white font-orbitron">
+              <h3 className="hidden md:block text-lg md:pl-16 lg:pl-20 lg:text-xl xl:text-3xl 2xl:text-5xl font-bold text-pink-800 font-orbitron leading-tight">
                 {item.title}
               </h3>
             </div>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-white font-orbitron">
+            <div className="relative pl-12 sm:pl-16 md:pl-4 pr-2 sm:pr-4 w-full">
+              <h3 className="md:hidden block text-xl sm:text-2xl mb-3 sm:mb-4 text-left font-bold text-pink-800 font-orbitron leading-tight">
                 {item.title}
               </h3>
               {item.content}{" "}
@@ -74,14 +74,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-white/20 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute left-6 sm:left-7 md:left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-pink-300 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,white_10%,white_90%,transparent_100%)]"
         >
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-neutral-500 via-pink-500 to-neutral-300 from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-white via-pink-500 to-white from-[0%] via-[10%] rounded-full"
           />
         </div>
       </div>
