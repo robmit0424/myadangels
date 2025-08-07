@@ -71,9 +71,23 @@ export default function ComingSoonPage() {
   }, [])
 
   useEffect(() => {
-    // Set video playback rate to 100%
+    // Set video playback rate to 100% and add error handling
     if (videoRef.current) {
-      videoRef.current.playbackRate = 1.0
+      const video = videoRef.current
+      video.playbackRate = 1.0
+      
+      // Add event listeners for debugging
+      video.addEventListener('loadstart', () => console.log('Video loading started'))
+      video.addEventListener('canplay', () => console.log('Video can start playing'))
+      video.addEventListener('error', (e) => console.error('Video error:', e))
+      video.addEventListener('stalled', () => console.log('Video stalled'))
+      
+      return () => {
+        video.removeEventListener('loadstart', () => {})
+        video.removeEventListener('canplay', () => {})
+        video.removeEventListener('error', () => {})
+        video.removeEventListener('stalled', () => {})
+      }
     }
   }, [])
 
@@ -124,22 +138,35 @@ export default function ComingSoonPage() {
           autoPlay
           muted
           loop
+          playsInline
+          preload="auto"
           className="w-full h-full object-cover"
           style={{
             filter: 'brightness(0.8)',
             transform: 'scale(1.05)',
             transformOrigin: 'center center'
           }}
+          onError={(e) => {
+            console.error('Video failed to load, falling back to image')
+            // Hide video and show fallback
+            e.currentTarget.style.display = 'none'
+          }}
         >
           <source src="/mountainszoom.mp4" type="video/mp4" />
-          {/* Fallback to image if video fails to load */}
-          <div 
-            className="w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: "url('/mountains.jpeg')"
-            }}
-          />
+          <source src="/mountainszoom.webm" type="video/webm" />
+          Your browser does not support the video tag.
         </video>
+        {/* Fallback image - always present but behind video */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/mountains.jpeg')",
+            filter: 'brightness(0.8)',
+            transform: 'scale(1.05)',
+            transformOrigin: 'center center',
+            zIndex: -1
+          }}
+        />
       </div>
       <Toaster />
       <FloatingElements />
