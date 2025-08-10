@@ -152,8 +152,7 @@ export default function ComingSoonPage() {
           onLoadStart={() => console.log('Video loading started')}
           onCanPlay={() => console.log('Video can play')}
         >
-          <source src="/mountainszoom.mp4" type="video/mp4" />
-          <source src="/mountainszoom.webm" type="video/webm" />
+          <source src="/MountainsZoom.mp4" type="video/mp4" />
         </video>
       </div>
       <Toaster />
@@ -253,14 +252,17 @@ export default function ComingSoonPage() {
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Footer - Bottom Right Corner */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 left-0 right-0 text-center text-white/80 font-roboto px-4 drop-shadow-lg"
+        className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 right-4 sm:right-6 md:right-8 lg:right-12 text-white/80 font-roboto drop-shadow-lg text-right"
       >
-        <p className="text-xs sm:text-sm md:text-base font-medium">&copy; 2025 Ad Angels™. All rights reserved.</p>
+        <p className="text-xs sm:text-sm md:text-base font-medium">&copy; 2024 Ad Angels™. All rights reserved.</p>
+        <a href="mailto:info@myadangels.com" className="text-xs sm:text-sm md:text-base font-medium hover:text-white transition-colors">
+          info@myadangels.com
+        </a>
       </motion.div>
 
       {/* Dev Mode Button - Only visible on localhost */}
