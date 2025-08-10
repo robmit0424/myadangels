@@ -6,12 +6,9 @@ import Image from "next/image"
 import { 
   Sparkles,
   Mail,
-  ArrowRight,
   Code2
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import toast, { Toaster } from 'react-hot-toast'
 
 // Floating Elements Component
 const FloatingElements = () => {
@@ -50,7 +47,6 @@ const FloatingElements = () => {
 }
 
 export default function ComingSoonPage() {
-  const [email, setEmail] = useState("")
   const [showDevMode, setShowDevMode] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [timeLeft, setTimeLeft] = useState({
@@ -100,21 +96,6 @@ export default function ComingSoonPage() {
     return () => clearInterval(timer)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email) {
-      toast.success('Thank you for joining our waitlist!', {
-        duration: 4000,
-        position: 'top-center',
-        style: {
-          background: '#ffffff',
-          color: '#ec4899',
-          border: '1px solid rgba(236, 72, 153, 0.3)',
-        },
-      })
-      setEmail("")
-    }
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-pink-50 to-white relative overflow-hidden flex items-center justify-center py-4 sm:py-6">
@@ -141,9 +122,7 @@ export default function ComingSoonPage() {
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
           style={{
-            filter: 'brightness(0.8)',
-            transform: 'scale(1.05)',
-            transformOrigin: 'center center'
+            filter: 'brightness(0.8)'
           }}
           onError={(e) => {
             console.error('Video failed to load, using image fallback')
@@ -155,7 +134,6 @@ export default function ComingSoonPage() {
           <source src="/MountainsZoom.mp4" type="video/mp4" />
         </video>
       </div>
-      <Toaster />
       <FloatingElements />
       
       {/* Background gradient orbs */}
@@ -217,37 +195,6 @@ export default function ComingSoonPage() {
             earn digital coins through engaging gameplay. Where play is production.
           </motion.p>
 
-
-          {/* Email Signup */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="max-w-md mx-auto px-4"
-          >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row sm:gap-3">
-              <div className="flex-1 relative">
-                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-pink-400" />
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 sm:py-4 bg-white/80 backdrop-blur-xl border border-pink-200 text-pink-800 placeholder:text-pink-400 rounded-lg sm:rounded-xl focus:border-pink-400/70 focus:outline-none focus:ring-2 focus:ring-pink-400/30 font-roboto text-sm sm:text-base transition-all duration-200"
-                  required
-                />
-              </div>
-              <Button
-                type="submit"
-                className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-orbitron shadow-lg hover:shadow-pink-500/25 transition-all duration-300 group text-sm sm:text-base whitespace-nowrap hover:scale-[1.02] active:scale-95"
-              >
-                Join Waitlist
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </form>
-            
-          </motion.div>
-
         
         </div>
       </div>
@@ -257,12 +204,18 @@ export default function ComingSoonPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 right-4 sm:right-6 md:right-8 lg:right-12 text-white/80 font-roboto drop-shadow-lg text-right"
+        className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 right-4 sm:right-6 md:right-8 lg:right-12 text-right"
       >
-        <p className="text-xs sm:text-sm md:text-base font-medium">&copy; 2024 Ad Angels™. All rights reserved.</p>
-        <a href="mailto:info@myadangels.com" className="text-xs sm:text-sm md:text-base font-medium hover:text-white transition-colors">
-          info@myadangels.com
-        </a>
+        <div className="backdrop-blur-md bg-white/10 rounded-lg px-4 py-3 border border-white/20 shadow-xl">
+          <a 
+            href="mailto:info@myadangels.com" 
+            className="text-xs sm:text-sm md:text-base font-semibold text-pink-300 hover:text-pink-200 transition-all duration-300 inline-flex items-center gap-1 group mb-1"
+          >
+            <Mail className="w-3 h-3 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
+            info@myadangels.com
+          </a>
+          <p className="text-xs sm:text-sm md:text-base font-medium text-white/90">&copy; 2024 Ad Angels™. All rights reserved.</p>
+        </div>
       </motion.div>
 
       {/* Dev Mode Button - Only visible on localhost */}
