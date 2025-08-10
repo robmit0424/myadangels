@@ -183,19 +183,7 @@ export default function ComingSoonPage() {
             className="text-base italic sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/95 mb-4 sm:mb-6 lg:mb-8 font-roboto px-4 drop-shadow-xl"
           >
             Where Marketing is Magic and Production is Play
-          </motion.p>
-          {/* Description */}
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-2xl mx-auto font-roboto leading-relaxed px-4 drop-shadow-lg"
-          >
-            We're building the future of work — a 3D virtual workspace where freelancers 
-            earn digital coins through engaging gameplay. Where play is production.
-          </motion.p>
-
-        
+          </motion.p>          
         </div>
       </div>
 
